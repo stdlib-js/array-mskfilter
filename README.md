@@ -60,7 +60,7 @@ To view installation and usage instructions specific to each branch build, be su
 ## Usage
 
 ```javascript
-var mskfilter = require( '@stdlib/array-base-mskfilter' );
+var mskfilter = require( '@stdlib/array-mskfilter' );
 ```
 
 #### mskfilter( x, mask )
@@ -79,33 +79,6 @@ The function supports the following parameters:
 -   **x**: input array.
 -   **mask**: mask array.
 
-The function **always** returns a new "generic" array.
-
-#### mskfilter.assign( x, mask, out, stride, offset )
-
-Applies a mask to a provided input array and assigns unmasked values to elements in a provided output array.
-
-```javascript
-var x = [ 1, 2, 3, 4 ];
-var mask = [ 0, 1, 0, 1 ];
-
-var out = [ 0, 0, 0, 0 ];
-
-var arr = mskfilter.assign( x, mask, out, -2, out.length-1 );
-// returns [ 0, 4, 0, 2 ]
-
-var bool = ( arr === out );
-// returns true
-```
-
-The function supports the following parameters:
-
--   **x**: input array.
--   **mask**: mask array.
--   **out**: output array.
--   **stride**: output array stride.
--   **offset**: output array offset.
-
 </section>
 
 <!-- /.usage -->
@@ -115,6 +88,7 @@ The function supports the following parameters:
 ## Notes
 
 -   If a `mask` array element is truthy, the corresponding element in `x` is **included** in the output array; otherwise, the corresponding element in `x` is "masked" and thus **excluded** from the output array.
+-   If provided an input array having a recognized [data type][@stdlib/array/dtypes], the function returns an array having the same [data type][@stdlib/array/dtypes] as the input array. Otherwise, the function **always** returns a "generic" array.
 
 </section>
 
@@ -127,12 +101,12 @@ The function supports the following parameters:
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-var zeroTo = require( '@stdlib/array-base-zero-to' );
+var zeroTo = require( '@stdlib/array-zero-to' );
 var bernoulli = require( '@stdlib/random-array-bernoulli' );
-var mskfilter = require( '@stdlib/array-base-mskfilter' );
+var mskfilter = require( '@stdlib/array-mskfilter' );
 
 // Generate a linearly spaced array:
-var x = zeroTo( 20 );
+var x = zeroTo( 20, 'generic' );
 console.log( x );
 
 // Generate a random mask:
@@ -229,6 +203,8 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 [branches-url]: https://github.com/stdlib-js/array-mskfilter/blob/main/branches.md
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/array-mskfilter/main/LICENSE
+
+[@stdlib/array/dtypes]: https://github.com/stdlib-js/array-dtypes
 
 </section>
 
