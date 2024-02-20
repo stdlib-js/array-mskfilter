@@ -35,38 +35,32 @@ limitations under the License.
 
 > Apply a mask to a provided input array.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/array-mskfilter
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-mskfilter = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/array-base-mskfilter@umd/browser.js' )
-```
-
-To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
-
-```javascript
-var mskfilter = require( 'path/to/vendor/umd/array-base-mskfilter/index.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-base-mskfilter@umd/browser.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.mskfilter;
-})();
-</script>
+var mskfilter = require( '@stdlib/array-mskfilter' );
 ```
 
 #### mskfilter( x, mask )
@@ -85,33 +79,6 @@ The function supports the following parameters:
 -   **x**: input array.
 -   **mask**: mask array.
 
-The function **always** returns a new "generic" array.
-
-#### mskfilter.assign( x, mask, out, stride, offset )
-
-Applies a mask to a provided input array and assigns unmasked values to elements in a provided output array.
-
-```javascript
-var x = [ 1, 2, 3, 4 ];
-var mask = [ 0, 1, 0, 1 ];
-
-var out = [ 0, 0, 0, 0 ];
-
-var arr = mskfilter.assign( x, mask, out, -2, out.length-1 );
-// returns [ 0, 4, 0, 2 ]
-
-var bool = ( arr === out );
-// returns true
-```
-
-The function supports the following parameters:
-
--   **x**: input array.
--   **mask**: mask array.
--   **out**: output array.
--   **stride**: output array stride.
--   **offset**: output array offset.
-
 </section>
 
 <!-- /.usage -->
@@ -121,6 +88,7 @@ The function supports the following parameters:
 ## Notes
 
 -   If a `mask` array element is truthy, the corresponding element in `x` is **included** in the output array; otherwise, the corresponding element in `x` is "masked" and thus **excluded** from the output array.
+-   If provided an input array having a recognized [data type][@stdlib/array/dtypes], the function returns an array having the same [data type][@stdlib/array/dtypes] as the input array. Otherwise, the function **always** returns a "generic" array.
 
 </section>
 
@@ -132,18 +100,13 @@ The function supports the following parameters:
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-base-zero-to@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-bernoulli@umd/browser.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-base-mskfilter@umd/browser.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var zeroTo = require( '@stdlib/array-zero-to' );
+var bernoulli = require( '@stdlib/random-array-bernoulli' );
+var mskfilter = require( '@stdlib/array-mskfilter' );
 
 // Generate a linearly spaced array:
-var x = zeroTo( 20 );
+var x = zeroTo( 20, 'generic' );
 console.log( x );
 
 // Generate a random mask:
@@ -155,11 +118,6 @@ console.log( mask );
 // Filter an array using the mask:
 var y = mskfilter( x, mask );
 console.log( y );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -245,6 +203,8 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 [branches-url]: https://github.com/stdlib-js/array-mskfilter/blob/main/branches.md
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/array-mskfilter/main/LICENSE
+
+[@stdlib/array/dtypes]: https://github.com/stdlib-js/array-dtypes
 
 </section>
 
