@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/array-mskfilter",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Apply a mask to a provided input array.",
   "license": "Apache-2.0",
   "author": {
@@ -37,13 +37,13 @@
     "url": "https://github.com/stdlib-js/stdlib/issues"
   },
   "dependencies": {
-    "@stdlib/array-base-count-truthy": "github:stdlib-js/array-base-count-truthy#main",
+    "@stdlib/array-base-count-truthy": "^0.1.0",
     "@stdlib/array-base-mskfilter": "^0.2.0",
     "@stdlib/array-dtype": "^0.2.0",
     "@stdlib/array-zeros": "^0.2.0",
     "@stdlib/assert-is-collection": "^0.2.0",
     "@stdlib/string-format": "^0.2.0",
-    "@stdlib/types": "^0.3.1"
+    "@stdlib/types": "^0.3.2"
   },
   "devDependencies": {
     "@stdlib/array-base-ones": "^0.2.0",
